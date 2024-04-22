@@ -1,0 +1,12 @@
+TecplotフォーマットのParaview可視化応急処置なんですが、
+まずはヘッダの下記を書き換えてください。
+variables=x[mm],y[mm],u[m/s],v[m/s],Ttr[K],Te[K],Trot[K],Tvib[K],	p[Pa],pe[Pa],rho[kg/m^3],Mach,Q_j[W/m^3],phi[V],J[A/m^2],				jx[A/m^2],jy[A/m^2],jz[A/m^2],Ez[V/m],Ezr,Ezm,B[T],Bx,By,Fb,Fbx,Fby,qraE[W/m^2]		N2,O2,NO,N2+,O2+,NO+,N,O,N+,O+,e-,ne[1/m^3],kt,et,mut,Re,ResiEual
+-->
+variables=x,y,u[m/s],v[m/s],Ttr[K],Te[K],Trot[K],Tvib[K],	p[Pa],pe[Pa],rho[kg/m^3],Mach,Q_j[W/m^3],phi[V],J[A/m^2],				jx[A/m^2],jy[A/m^2],jz[A/m^2],Ez[V/m],Ezr,Ezm,B[T],Bx,By,Fb,Fbx,Fby,qraE[W/m^2]		N2,O2,NO,N2+,O2+,NO+,N,O,N+,O+,e-,ne[1/m^3],kt,et,mut,Re,ResiEual
+(x[mm], y[mm]をx, yに書き換え)
+次にすべての実数の指数表記ですが
+ -1.1854375000D+02
+を
+ -1.1854375000E+02
+などのように“D”を“E”にかきかえてください。置換など使うかいっそPythonで全処理が早いと思います。これでParaviewのTecplotリーダで読めるようになると思います。
+うまくいったデータを共有します。
